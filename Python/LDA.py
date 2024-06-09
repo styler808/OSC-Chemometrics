@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
-
-
 #Import Libraries
 from sklearn.model_selection import train_test_split
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
@@ -15,7 +12,8 @@ import pandas as pd
 import numpy as np
 
 #LOAD AND VIEW DATASET
-fifteen_min = pd.read_csv('PTB7_LargeDataSetAll3.csv')
+#Change name of csv file to match desired dataset
+fifteen_min = pd.read_csv('DATASET.csv')
 print(fifteen_min.head())
 
 #DEFINE PREDICTOR AND RESPONSE VARIABLES
@@ -38,10 +36,6 @@ print('The mean accuracy is: {}%'.format(percent))
 print("---------------------------------------------------")
 print('Explained variation per linear discriminant: {}'.format(lda.explained_variance_ratio_))
 print("---------------------------------------------------")
-
-
-# In[5]:
-
 
 #Plot LDA scores
 import matplotlib.pyplot as plt
@@ -72,11 +66,5 @@ classes = ['Pristine', '30x1', '30x2', '30x3', '30x4', '30x5', '30x6', '30x7', '
 plt.legend(numpoints=1, handles=scatter.legend_elements()[0], labels=classes, markerscale = 3, frameon = False, fontsize = 30, loc = 'best')
 
 
-plt.savefig('test_LDA-FilmOnly-1300-1900.png')
-
-
-# In[ ]:
-
-
-
+plt.savefig('DATASET.png')
 
