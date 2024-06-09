@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
-
-
 #Import Libraries
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -16,10 +13,6 @@ import numpy as np
 fifteen_min = pd.read_csv('PTB7_LargeDataSet1300-1900_3.csv')
 fifteen_min.head()
 
-
-# In[5]:
-
-
 #DEFINE 
 
 X = fifteen_min.values[:, 1:]
@@ -29,10 +22,6 @@ pca = PCA(n_components=40)
 X_r = pca.fit(X).transform(X)
 
 print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
-
-
-# In[6]:
-
 
 #Plot PCA scores
 import matplotlib.pyplot as plt
@@ -64,10 +53,9 @@ classes = ['Pristine', '30x1', '30x2', '30x3', '30x4', '30x5', '30x6', '30x7', '
 plt.legend(numpoints=1, handles=scatter.legend_elements()[0], labels=classes, markerscale = 3, frameon = False, fontsize = 30, loc = 'best')
 
 
-plt.savefig('032323_PCA-FilmOnly-1300-1900.png')
+plt.savefig('PCA_PTB7_1300-1900.png')
 
 
-# In[ ]:
 
 
 
