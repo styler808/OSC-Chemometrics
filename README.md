@@ -1,5 +1,5 @@
 # OSC-Chemometrics
-Code and FTIR data used for chemometric treatment of OSC spectroscopic data.
+Code and FTIR data used for chemometric treatment of OSC spectroscopic data. For PCA-LDA, if predictions are not needed, the code relating to unknown samples and prediction can be deleted, and script will just perform PCA-LDA on a training dataset.
 
 Data Folder:
 FTIR spectral datasets for two OSC systems (FBTF and PTB7). Each system was exposed to cumulative intervals of photo-exposure from a solar simulator. FBTF films on two substrates (Ag and ITO) were exposed to 15 minute intervals while PTB7 films on a ZnSe internal reflection element were exposed to 30 minute intervals.
