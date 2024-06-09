@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
-
-
 #Import Libraries and Test Dataset
 
 import pandas as pd
@@ -14,14 +11,10 @@ from sklearn import datasets
 import numpy as np
 
 #LOAD AND VIEW DATASET
-#Change name of CSV to match desired dataset
+#Change name of CSV to match desired training dataset
 
-fifteen_min = pd.read_csv('PTB7_LargeDataSetAll3.csv')
+fifteen_min = pd.read_csv('TRAINING-DATASET.csv')
 fifteen_min.head()
-
-
-# In[14]:
-
 
 #Define how many PCA components to calculate for Training Dataset and export to CSV on desktop
 #Columns match the number of PCAs, index matches number of samples in Training Dataset
@@ -37,37 +30,26 @@ columns = [f'col_{num}' for num in range(40)]
 index = [f'index_{num}' for num in range(132)]
 df2 = pd.DataFrame(X_r, columns=columns, index=y)
 
-df2.to_csv("pcascores_TEST.csv")
-
+df2.to_csv("pcascores_TRAINING-DATASET.csv")
 
 #Show the explained variation per PCA calculated for Training Dataset
 
 print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
 
-
-# In[15]:
-
-
 #Import the PCA scores of the Training Dataset from the CSV created in the steps above
 
-pca_scores = pd.read_csv('pcascores_TEST.csv')
+pca_scores = pd.read_csv('pcascores_TRAINING-DATASET.csv')
 pca_scores.head()
-
-
-# In[16]:
 
 
 #Import CSV with spectral data from unknown sample or samples and calculate PCA values
 #First row is wavenumber value, subsequent rows are absorption values
 
-X_test = pd.read_csv('KellenDataAllPaper4.csv')
+X_test = pd.read_csv('TEST-DATASET.csv')
 
 X_test.head()
 
 pca_unk = pca.transform(X_test)
-
-
-# In[17]:
 
 
 #Export calculated PCA values from unknown sample or samples to CSV on desktop
@@ -75,10 +57,7 @@ pca_unk = pca.transform(X_test)
 
 df3 = pd.DataFrame(pca_unk)
 
-df3.to_csv("pca_scoresKellenDataAll-TEST.csv")
-
-
-# In[18]:
+df3.to_csv("pca_scores_TEST-DATASET.csv")
 
 
 #Import library for LDA
@@ -140,21 +119,11 @@ print('The mean accuracy is: {}%'.format(percent))
 print('Explained variation per linear discriminant: {}'.format(lda.explained_variance_ratio_))
 
 
-# In[20]:
+# Upload previously created CSV with pca scores from unknown sample or samples and have it read/predicted automatically
 
-
-# Upload CSV with pca scores from unknown sample or samples and have it read/predicted automatically
-
-unk = pd.read_csv('pca_scoresKellenDataAll-TEST.csv', header=None)
+unk = pd.read_csv('pca_scores_TEST-DATASET.csv', header=None)
 
 lda.transform(unk)
 lda.predict(unk)
 
 print('The predicted group for the unknown sample is: Group{}'.format(lda.predict(unk)))
-
-
-# In[ ]:
-
-
-
-
